@@ -1,0 +1,49 @@
+<div class="container">
+
+  <h2> Student Management System</h2>
+
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Add Student
+  </button>
+
+  <table mat-table [dataSource]="students" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let s">{{s.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let s">{{s.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="course">
+      <th mat-header-cell *matHeaderCellDef>Course</th>
+      <td mat-cell *matCellDef="let s">{{s.course}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef>Mobile</th>
+      <td mat-cell *matCellDef="let s">{{s.mobile}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let s">{{s.status}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let s; let i = index">
+        <button mat-button (click)="edit(s, i)">Edit</button>
+        <button mat-button color="warn" (click)="delete(i)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id','name','course','mobile','status','actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id','name','course','mobile','status','actions'];"></tr>
+
+  </table>
+
+</div>
